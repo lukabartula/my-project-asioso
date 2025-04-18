@@ -4,14 +4,16 @@
 {% block title %}Home - asioso test template{% endblock %}
 
 {% block content %}
-  <!-- Slider -->
+  <!-- Slider, hero image with editable text-->
   <section id="slider" style="position: relative; text-align: center;">
 
   {{ pimcore_image('heroImage', {
     class: 'hero-image',
-    width: 960,
-    height: 360,
     alt: 'Hero Image',
+    thumbnail:  {
+            "width": 960,
+            "height": 360,
+        },
     default: asset('images/demo/centenario960x360.jpg')
   }) }}
 
