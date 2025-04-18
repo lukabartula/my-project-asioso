@@ -1,0 +1,68 @@
+{# templates/default.html.twig #}
+{% extends 'layout.html.twig' %}
+
+{% block title %}Home - asioso test template{% endblock %}
+
+{% block content %}
+  <!-- Slider -->
+  <section id="slider" style="position: relative; text-align: center;">
+
+  {{ pimcore_image('heroImage', {
+    class: 'hero-image',
+    width: 960,
+    height: 360,
+    alt: 'Hero Image',
+    default: asset('images/demo/centenario960x360.jpg')
+  }) }}
+
+  <div class="hero-overlay-text"
+       style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);
+              color: white;  padding: 20px; border-radius: 10px;">
+    <h1>{{ pimcore_input('heroTitle', { width: 400 }) }}</h1>
+    <p>{{ pimcore_input('heroSubtitle', { width: 600 }) }}</p>
+  </div>
+
+</section>
+
+
+  <!-- main content -->
+  <div id="homepage">
+    <!-- Services -->
+    <section id="services" class="clear">
+      {% for i in 1..3 %}
+        <article class="one_third{% if i == 3 %} lastbox{% endif %}">
+          <figure>
+            <img src="{{ asset('images/demo/290x180.gif') }}" width="290" height="180" alt="">
+            <figcaption>
+              <h2>Indonectetus facilis</h2>
+              <p>Nullamlacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna.</p>
+              <footer class="more"><a href="#">Read More &raquo;</a></footer>
+            </figcaption>
+          </figure>
+        </article>
+      {% endfor %}
+    </section>
+
+    <!-- Introduction -->
+    <section id="intro" class="last clear">
+      <article>
+        <figure>
+          <img src="{{ asset('images/demo/450x250.gif') }}" width="450" height="250" alt="">
+          <figcaption>
+            <h2>Indonectetus facilis leo nibh</h2>
+            <p>This is a W3C compliant free website template from 
+              <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. 
+              For full terms of use of this template please read our 
+              <a href="http://www.os-templates.com/template-terms">website template licence</a>.
+            </p>
+            <p>You can use and modify the template for both personal and commercial use. You must keep all copyright 
+              information and credit links in the template and associated files. For more HTML5 templates visit 
+              <a href="http://www.os-templates.com/">free website templates</a>.
+            </p>
+            <footer class="more"><a href="#">Read More &raquo;</a></footer>
+          </figcaption>
+        </figure>
+      </article>
+    </section>
+  </div>
+{% endblock %}
