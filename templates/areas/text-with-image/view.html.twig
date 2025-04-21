@@ -1,20 +1,126 @@
-    <section id="intro" class="last clear">
-      <article>
-        <figure>
-          <img src="{{ asset('images/demo/450x250.gif') }}" width="450" height="250" alt="">
-          <figcaption>
-            <h2>Indonectetus facilis leo nibh</h2>
-            <p>This is a W3C compliant free website template from 
-              <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a>. 
-              For full terms of use of this template please read our 
-              <a href="http://www.os-templates.com/template-terms">website template licence</a>.
-            </p>
-            <p>You can use and modify the template for both personal and commercial use. You must keep all copyright 
-              information and credit links in the template and associated files. For more HTML5 templates visit 
-              <a href="http://www.os-templates.com/">free website templates</a>.
-            </p>
-            <footer class="more"><a href="#">Read More &raquo;</a></footer>
-          </figcaption>
-        </figure>
-      </article>
-    </section>
+{% set layoutSelect = pimcore_select('layout', {
+    'store': [
+        ['left', 'Left side Image'],
+        ['right', 'Right side Image']
+    ],
+    'defaultValue': 'left',
+    'reload': true
+}) %}
+
+{% set imagePosition = layoutSelect.getData() %}
+
+<section class="text-with-image {% if imagePosition == 'right' %}image-right{% else %}image-left{% endif %}">
+    {% if editmode %}
+    <div class="layout-selector">
+        <label>Layout:</label>
+        {{ layoutSelect|raw }}
+    </div>
+    {% endif %}
+
+    <div class="content-wrapper">
+        {# Image column #}
+        <div class="image-column">
+            {{ pimcore_image('image', {
+                'thumbnail': 'content',
+                'width': 450,
+                'height': 250,
+                'class': 'content-image'
+            }) }}
+        </div>
+
+        {# Text column #}
+        <div class="text-column">
+            <h2>{{ pimcore_input('headline', {'placeholder': 'Enter headline here'}) }}</h2>
+            <div class="summary">
+                {{ pimcore_wysiwyg('text', {
+                    'height': '200px',
+                    'placeholder': 'Enter your text here'
+                }) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if editmode %}
+<style>
+.text-with-image {
+    padding: 20px;
+    background: #f5f5f5;
+    margin: 10px 0;
+}
+
+.layout-selector {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.image-right .content-wrapper {
+    flex-direction: row-reverse;
+}
+
+.image-column, .text-column {
+    flex: 1;
+}
+
+.content-image {
+    width: 100%;
+    height: auto;
+    background: #ddd;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-column h2 {
+    margin-top: 0;
+}
+
+.pimcore_input_label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+</style>
+{% else %}
+<style>
+.text-with-image {
+    margin: 40px 0;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.image-right .content-wrapper {
+    flex-direction: row-reverse;
+}
+
+.image-column, .text-column {
+    flex: 1;
+}
+
+.content-image {
+    width: 100%;
+    height: auto;
+}
+
+.text-column h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.summary {
+    line-height: 1.6;
+}
+</style>
+{% endif %}

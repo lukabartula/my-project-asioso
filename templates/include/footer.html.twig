@@ -1,0 +1,30 @@
+<div class="wrapper row3">
+  <div id="footer" class="clear">
+
+    {# Outer block: Repeatable columns #}
+    {% set footerSections = pimcore_block('footerSections') %}
+    {% set totalSections = footerSections.getCount() %}
+
+    {% for section in pimcore_iterate_block(footerSections) %}
+      <section class="one_quarter{% if loop.index == totalSections %} lastbox{% endif %}">
+        <h2 class="title">{{ pimcore_input('sectionTitle', { placeholder: 'Enter block title' }) }}</h2>
+        <nav>
+          <ul>
+
+            {# Inner block: Repeatable links inside the section #}
+            {% set columnLinks = pimcore_block('columnLinks') %}
+            {% set totalLinks = columnLinks.getCount() %}
+
+            {% for link in pimcore_iterate_block(columnLinks) %}
+              <li{% if loop.index == totalLinks %} class="last"{% endif %}>
+                {{ pimcore_link('navLink', { text: 'Link text here' }) }}
+              </li>
+            {% endfor %}
+
+          </ul>
+        </nav>
+      </section>
+    {% endfor %}
+
+  </div>
+</div>

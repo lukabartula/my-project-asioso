@@ -10,30 +10,40 @@
         </div>
     {% endif %}
     
-    {% set newsCollection = pimcore_relations('newsItems') %}
-    {% set totalNews = newsCollection|length %}
+    {# Get relation objects #}
+    {% set relations = pimcore_relations('newsItems').getElements() %}
     
     <div class="news-container">
-        {% for newsItem in newsCollection %}
-            <div class="news-card {% if loop.last %}last-news-item{% endif %}">
-                <div class="news-image-container">
-                    {% if newsItem.thumbnail is defined and newsItem.thumbnail %}
-                        {{ newsItem.thumbnail.thumbnail({width: 290, height: 180}).html|raw }}
-                    {% else %}
-                        <div class="placeholder-image">290 x 180px</div>
-                    {% endif %}
-                </div>
-                
-                <div class="news-content">
-                    <h3 class="news-title">{{ newsItem.title }}</h3>
-                    <div class="news-excerpt">{{ newsItem.description }}</div>
-                    <div class="news-link-container">
-                        <a href="{{ pimcore_url({object: newsItem, action: 'detail'}, 'news') }}" class="news-more-link">
-                            Read more &raquo;
-                        </a>
+        {% if relations|length > 0 %}
+            {% for relation in relations %}
+                {# Load the full News object #}
+                {% set newsItem = pimcore_object(relation.getDestination()) %}
+                {% if newsItem and newsItem.isPublished() %}
+                    <div class="news-card {% if loop.last %}last-news-item{% endif %}">
+                        <div class="news-image-container">
+                            {% if newsItem.getThumbnail() %}
+                                {{ newsItem.getThumbnail().getThumbnail({width: 290, height: 180}).getHTML()|raw }}
+                            {% else %}
+                                <div class="placeholder-image">290 x 180px</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="news-content">
+                            <h3 class="news-title">{{ newsItem.getTitle() }}</h3>
+                            <div class="news-excerpt">{{ newsItem.getDescription() }}</div>
+                            <div class="news-link-container">
+                                <a href="{{pimcore_url({'id':element.getId()},'news-detail')}}" class="news-more-link">
+                                    Read more &raquo;
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% if editmode %}
+                <div class="no-news-message">Please add news items using the editor above</div>
+            {% endif %}
+        {% endif %}
     </div>
 </section>
