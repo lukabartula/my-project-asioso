@@ -52,14 +52,17 @@ services:
 
     #
     # COMMANDS
-    #
+    #   
 
     # auto-register all commands as services
     App\Command\:
         resource: '../src/Command/*'
         tags: [ 'console.command' ]
 
-
+    # Register all Areabricks
+    App\Document\Areabrick\:
+        resource: '../src/Document/Areabrick/*'
+        tags: ['pimcore.area.brick']
 
     # Example custom templating helper
     # App\Templating\Helper\Example:
@@ -73,3 +76,8 @@ services:
     # App\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+    App\Document\Areabrick\HeroImage:
+        arguments: ['@logger']
+        tags:
+            { name: pimcore.area.brick, id: hero-image }
+

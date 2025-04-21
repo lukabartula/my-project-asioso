@@ -6,13 +6,20 @@ use Pimcore\Bundle\AdminBundle\Controller\Admin\LoginController;
 use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bridge\Twig\Attribute\Template;
+
 
 class DefaultController extends FrontendController
 {
-    public function defaultAction(Request $request): Response
+    /**
+     *
+     * @return array
+     */
+    #[Template('default/default.html.twig')]
+    public function defaultAction(): array
     {
-        return $this->render('default/default.html.twig');
-    }    
+        return [];
+    }
 
     /**
      * Forwards the request to admin login

@@ -1,0 +1,39 @@
+<section class="news-section">
+    {% if editmode %}
+        <div class="pimcore-editable">
+            {{ pimcore_relations('newsItems', {
+                'types': ['object'],
+                'subtypes': {'object': ['object']},
+                'classes': ['News'],
+                'width': '100%'
+            }) }}
+        </div>
+    {% endif %}
+    
+    {% set newsCollection = pimcore_relations('newsItems') %}
+    {% set totalNews = newsCollection|length %}
+    
+    <div class="news-container">
+        {% for newsItem in newsCollection %}
+            <div class="news-card {% if loop.last %}last-news-item{% endif %}">
+                <div class="news-image-container">
+                    {% if newsItem.thumbnail is defined and newsItem.thumbnail %}
+                        {{ newsItem.thumbnail.thumbnail({width: 290, height: 180}).html|raw }}
+                    {% else %}
+                        <div class="placeholder-image">290 x 180px</div>
+                    {% endif %}
+                </div>
+                
+                <div class="news-content">
+                    <h3 class="news-title">{{ newsItem.title }}</h3>
+                    <div class="news-excerpt">{{ newsItem.description }}</div>
+                    <div class="news-link-container">
+                        <a href="{{ pimcore_url({object: newsItem, action: 'detail'}, 'news') }}" class="news-more-link">
+                            Read more &raquo;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
