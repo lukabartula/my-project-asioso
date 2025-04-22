@@ -1,53 +1,64 @@
 <?php
 
+
 namespace App\Controller;
 
-use Pimcore\Controller\FrontendController;
+use App\Website\LinkGenerator\NewsLinkGenerator;
 use Pimcore\Model\DataObject\News;
 use Pimcore\Model\DataObject;
 use Pimcore\Twig\Extension\Templating\HeadTitle;
+use Pimcore\Twig\Extension\Templating\Placeholder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Pimcore\Controller\FrontendController;
 
 class NewsController extends FrontendController
 {
+   
+
     /**
-     * Handles the News detail view by object ID
-     *
-     * @Route("/news/{id}", name="news_detail", requirements={"id"="\d+"})
+     * @Route("news/{id}", name="news-detail")
      */
-    public function showAction(Request $request, HeadTitle $headTitle, int $id): Response
+    public function detailAction(Request $request, HeadTitle $headTitleHelper,$id): Response
     {
-        $newsItem = News::getById($id);
+        $news = News::getById($id);
 
-        if (!$this->isAccessible($newsItem, $request)) {
-            throw new NotFoundHttpException('The requested news item was not found or is unpublished.');
+        if (!($news instanceof News && ($news->isPublished() || $this->verifyPreviewRequest($request, $news)))) {
+            throw new NotFoundHttpException('News not found.');
         }
-
-        // Set the <title> in the HTML head dynamically
-        $headTitle($newsItem->getTitle());
-
-        return $this->render('news/news-details.html.twig', [
-            'news' => $newsItem
+        $headTitleHelper($news->getTitle());
+   
+        return $this->render('news/detail.html.twig', [
+            'news' => $news
         ]);
     }
 
     /**
-     * Checks if the News object is valid and accessible
+     * @param Request $request
+     * @param DataObject $object
+     *
+     * @return bool
      */
-    private function isAccessible(?DataObject\Concrete $object, Request $request): bool
+    protected function verifyPreviewRequest(Request $request, DataObject $object): bool
     {
-        if (!$object instanceof News) {
-            return false;
-        }
-
-        if ($object->isPublished()) {
+        if (Tool::isElementRequestByAdmin($request, $object)) {
             return true;
         }
 
-        // Allow access if it's a Pimcore admin preview
-        return $request->get('pimcore_preview') === 'true';
+        return false;
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    protected function getAllParameters(Request $request): array
+    {
+        return array_merge($request->request->all(), $request->query->all());
+    }
+
+  
 }

@@ -1,10 +1,11 @@
 <?php
 
+
+
 namespace App\Document\Areabrick;
+use Pimcore\Extension\Document\Areabrick\Attribute\AsAreabrick;
 
-use Pimcore\Extension\Document\Areabrick\AsAreaBrick;
-
-#[AsAreaBrick(id: 'news')]
+#[AsAreabrick(id: 'news')]
 class News extends AbstractAreabrick
 {
     /**
@@ -12,15 +13,6 @@ class News extends AbstractAreabrick
      */
     public function getName(): string
     {
-        return 'News Section';
+        return 'News';
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDescription(): string
-    {
-        return 'Displays news items with thumbnails and links';
-    }
-
 }

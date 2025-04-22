@@ -1,30 +1,82 @@
-<div class="wrapper row3">
-  <div id="footer" class="clear">
+{# templates/include/footer.html.twig #}
 
-    {# Outer block: Repeatable columns #}
-    {% set footerSections = pimcore_block('footerSections') %}
-    {% set totalSections = footerSections.getCount() %}
-
-    {% for section in pimcore_iterate_block(footerSections) %}
-      <section class="one_quarter{% if loop.index == totalSections %} lastbox{% endif %}">
-        <h2 class="title">{{ pimcore_input('sectionTitle', { placeholder: 'Enter block title' }) }}</h2>
-        <nav>
-          <ul>
-
-            {# Inner block: Repeatable links inside the section #}
-            {% set columnLinks = pimcore_block('columnLinks') %}
-            {% set totalLinks = columnLinks.getCount() %}
-
-            {% for link in pimcore_iterate_block(columnLinks) %}
-              <li{% if loop.index == totalLinks %} class="last"{% endif %}>
-                {{ pimcore_link('navLink', { text: 'Link text here' }) }}
-              </li>
-            {% endfor %}
-
-          </ul>
-        </nav>
-      </section>
-    {% endfor %}
-
-  </div>
+{# Section 1 - First Link Block #}
+<div class="wrapperCentered">
+    <div class="wrapperRow">
+        <section class="one_quarter first">
+            <h2 class="title">{{ pimcore_input('footer_block1_title', {'placeholder': 'LINK BLOCK'}) }}</h2>
+            <nav>
+                <ul>
+                    {% for i in range(1, 5) %}
+                        <li{% if loop.last %} class="last"{% endif %}>
+                            {{ pimcore_link('footer_link1_' ~ i, {
+                                'class': '',
+                                'text': 'Lorem ipsum dolor sit'
+                            }) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </section>
+    
+        {# Section 2 - Second Link Block #}
+        <section class="one_quarter">
+            <h2 class="title">{{ pimcore_input('footer_block2_title', {'placeholder': 'LINK BLOCK'}) }}</h2>
+            <nav>
+                <ul>
+                    {% for i in range(1, 5) %}
+                        <li{% if loop.last %} class="last"{% endif %}>
+                            {{ pimcore_link('footer_link2_' ~ i, {
+                                'class': '',
+                                'text': 'Lorem ipsum dolor sit'
+                            }) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </section>
+    
+        {# Section 3 - Third Link Block #}
+        <section class="one_quarter">
+            <h2 class="title">{{ pimcore_input('footer_block3_title', {'placeholder': 'LINK BLOCK'}) }}</h2>
+            <nav>
+                <ul>
+                    {% for i in range(1, 5) %}
+                        <li{% if loop.last %} class="last"{% endif %}>
+                            {{ pimcore_link('footer_link3_' ~ i, {
+                                'class': '',
+                                'text': 'Lorem ipsum dolor sit'
+                            }) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </section>
+    
+        {# Section 4 - Fourth Link Block #}
+        <section class="one_quarter lastbox">
+            <h2 class="title">{{ pimcore_input('footer_block4_title', {'placeholder': 'LINK BLOCK'}) }}</h2>
+            <nav>
+                <ul>
+                    {% for i in range(1, 5) %}
+                        <li{% if loop.last %} class="last"{% endif %}>
+                            {{ pimcore_link('footer_link4_' ~ i, {
+                                'class': '',
+                                'text': 'Lorem ipsum dolor sit'
+                            }) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </section>
+    </div>
+    
+    
+    <div>
+        <footer id="copyright" class="clear">
+            <p class="fl_left">Copyright &copy; {{ "now"|date("Y") }} - All Rights Reserved - Domain Name</p>
+            <p class="fl_right">Posao kod asioso</p>
+        </footer>
+    </div>
 </div>
+

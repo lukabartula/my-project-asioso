@@ -4,7 +4,17 @@ pimcore:
             thumbnails:
                 definitions:
                     content:
-                        items: {  }
+                        items:
+                            -
+                                method: scaleByHeight
+                                arguments:
+                                    height: 250
+                                    forceResize: false
+                            -
+                                method: scaleByWidth
+                                arguments:
+                                    width: 450
+                                    forceResize: false
                         medias: {  }
                         name: content
                         description: 'Content area images'
@@ -16,6 +26,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1745269069
+                        modificationDate: 1745284247
                         creationDate: 1745269014
                         preserveAnimation: false

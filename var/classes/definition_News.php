@@ -5,10 +5,10 @@
  * Variants: no
  *
  * Fields Summary:
- * - thumbnail [image]
- * - title [input]
+ * - media [image]
+ * - description [wysiwyg]
  * - shortDescription [textarea]
- * - newsArticle [textarea]
+ * - title [input]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -18,8 +18,8 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1745179082,
-   'userOwner' => 2,
+   'modificationDate' => 1745283886,
+   'userOwner' => NULL,
    'userModification' => 2,
    'parentClass' => '',
    'implementsInterfaces' => '',
@@ -48,8 +48,8 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'children' => 
     array (
       0 => 
-      \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
-         'name' => 'News Item',
+      \Pimcore\Model\DataObject\ClassDefinition\Layout\Tabpanel::__set_state(array(
+         'name' => 'Tabs',
          'type' => NULL,
          'region' => NULL,
          'title' => '',
@@ -62,119 +62,168 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'children' => 
         array (
           0 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
-             'name' => 'thumbnail',
-             'title' => 'Thumbnail Image',
-             'tooltip' => '',
-             'mandatory' => true,
-             'noteditable' => false,
-             'index' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+             'name' => 'Image',
+             'type' => NULL,
+             'region' => 'west',
+             'title' => '',
+             'width' => '',
+             'height' => '',
+             'collapsible' => false,
+             'collapsed' => false,
+             'bodyStyle' => '',
+             'datatype' => 'layout',
+             'children' => 
+            array (
+              0 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+                 'name' => 'media',
+                 'title' => 'Media',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'uploadPath' => '',
+                 'width' => '',
+                 'height' => '',
+              )),
+            ),
              'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
             ),
-             'uploadPath' => '',
-             'width' => 290,
-             'height' => 180,
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
+             'icon' => '/bundles/pimcoreadmin/img/flat-color-icons/asset.svg',
+             'labelWidth' => 100,
+             'labelAlign' => 'left',
           )),
           1 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'title',
-             'title' => 'News Title',
-             'tooltip' => '',
-             'mandatory' => true,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
+          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+             'name' => 'Text',
+             'type' => NULL,
+             'region' => NULL,
+             'title' => '',
              'width' => '',
-             'defaultValueGenerator' => '',
-          )),
-          2 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
-             'name' => 'shortDescription',
-             'title' => 'Short Description',
-             'tooltip' => '',
-             'mandatory' => true,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'maxLength' => NULL,
-             'showCharCount' => false,
-             'excludeFromSearchIndex' => false,
              'height' => '',
-             'width' => '',
-          )),
-          3 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
-             'name' => 'newsArticle',
-             'title' => 'News Article',
-             'tooltip' => '',
-             'mandatory' => true,
-             'noteditable' => false,
-             'index' => false,
+             'collapsible' => false,
+             'collapsed' => false,
+             'bodyStyle' => '',
+             'datatype' => 'layout',
+             'children' => 
+            array (
+              0 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+                 'name' => 'description',
+                 'title' => 'Description',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'toolbarConfig' => '',
+                 'excludeFromSearchIndex' => false,
+                 'maxCharacters' => '',
+                 'height' => 320,
+                 'width' => '',
+              )),
+              1 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                 'name' => 'shortDescription',
+                 'title' => 'Short Description',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'maxLength' => NULL,
+                 'showCharCount' => false,
+                 'excludeFromSearchIndex' => false,
+                 'height' => '',
+                 'width' => 500,
+              )),
+              2 => 
+              \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'name' => 'title',
+                 'title' => 'Title',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'fieldtype' => '',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'width' => 500,
+                 'defaultValueGenerator' => '',
+              )),
+            ),
              'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'fieldtype' => '',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
             ),
-             'maxLength' => NULL,
-             'showCharCount' => false,
-             'excludeFromSearchIndex' => false,
-             'height' => '',
-             'width' => '',
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
+             'icon' => '/bundles/pimcoreadmin/img/flat-color-icons/static_page.svg',
+             'labelWidth' => 100,
+             'labelAlign' => 'left',
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
+         'fieldtype' => 'tabpanel',
          'border' => false,
-         'icon' => '',
-         'labelWidth' => 100,
-         'labelAlign' => 'left',
+         'tabPosition' => 'top',
       )),
     ),
      'locked' => false,

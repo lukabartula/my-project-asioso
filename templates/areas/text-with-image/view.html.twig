@@ -1,45 +1,3 @@
-{% set layoutSelect = pimcore_select('layout', {
-    'store': [
-        ['left', 'Left side Image'],
-        ['right', 'Right side Image']
-    ],
-    'defaultValue': 'left',
-    'reload': true
-}) %}
-
-{% set imagePosition = layoutSelect.getData() %}
-
-<section class="text-with-image {% if imagePosition == 'right' %}image-right{% else %}image-left{% endif %}">
-    {% if editmode %}
-    <div class="layout-selector">
-        <label>Layout:</label>
-        {{ layoutSelect|raw }}
-    </div>
-    {% endif %}
-
-    <div class="content-wrapper">
-        {# Image column #}
-        <div class="image-column">
-            {{ pimcore_image('image', {
-                'thumbnail': 'content',
-                'width': 450,
-                'height': 250,
-                'class': 'content-image'
-            }) }}
-        </div>
-
-        {# Text column #}
-        <div class="text-column">
-            <h2>{{ pimcore_input('headline', {'placeholder': 'Enter headline here'}) }}</h2>
-            <div class="summary">
-                {{ pimcore_wysiwyg('text', {
-                    'height': '200px',
-                    'placeholder': 'Enter your text here'
-                }) }}
-            </div>
-        </div>
-    </div>
-</section>
 
 {% if editmode %}
 <style>
@@ -124,3 +82,49 @@
 }
 </style>
 {% endif %}
+
+
+
+
+{% set layoutSelect = pimcore_select('layout', {
+    'store': [
+        ['left', 'Left side Image'],
+        ['right', 'Right side Image']
+    ],
+    'defaultValue': 'left',
+    'reload': true
+}) %}
+
+{% set imagePosition = layoutSelect.getData() %}
+
+<section class="text-with-image {% if imagePosition == 'right' %}image-right{% else %}image-left{% endif %}">
+    {% if editmode %}
+    <div class="layout-selector">
+        <label>Layout:</label>
+        {{ layoutSelect|raw }}
+    </div>
+    {% endif %}
+
+    <div class="content-wrapper">
+        <div class="image-column">
+            {{ pimcore_image('image', {
+                'thumbnail': 'content',
+                'width': 450,
+                'height': 250,
+                'class': 'content-image'
+            }) }}
+        </div>
+
+
+        <div class="text-column">
+            <h2>{{ pimcore_input('headline', {'placeholder': 'Enter headline here'}) }}</h2>
+            <div class="summary">
+                {{ pimcore_wysiwyg('text', {
+                    'height': '200px',
+                    'placeholder': 'Enter your text here'
+                }) }}
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,49 +1,36 @@
-<section class="news-section">
+<section id="services" class="clear">
     {% if editmode %}
-        <div class="pimcore-editable">
-            {{ pimcore_relations('newsItems', {
-                'types': ['object'],
-                'subtypes': {'object': ['object']},
-                'classes': ['News'],
-                'width': '100%'
-            }) }}
-        </div>
+      
+        
+            {{ pimcore_relations("news",{"types": ["object"],
+                    "subtypes": {
+                        "object": ["object"]
+                    },
+                    "classes": ["News"] ,
+                
+                })
+            }}
+    
     {% endif %}
-    
-    {# Get relation objects #}
-    {% set relations = pimcore_relations('newsItems').getElements() %}
-    
-    <div class="news-container">
-        {% if relations|length > 0 %}
-            {% for relation in relations %}
-                {# Load the full News object #}
-                {% set newsItem = pimcore_object(relation.getDestination()) %}
-                {% if newsItem and newsItem.isPublished() %}
-                    <div class="news-card {% if loop.last %}last-news-item{% endif %}">
-                        <div class="news-image-container">
-                            {% if newsItem.getThumbnail() %}
-                                {{ newsItem.getThumbnail().getThumbnail({width: 290, height: 180}).getHTML()|raw }}
-                            {% else %}
-                                <div class="placeholder-image">290 x 180px</div>
-                            {% endif %}
-                        </div>
-                        
-                        <div class="news-content">
-                            <h3 class="news-title">{{ newsItem.getTitle() }}</h3>
-                            <div class="news-excerpt">{{ newsItem.getDescription() }}</div>
-                            <div class="news-link-container">
-                                <a href="{{pimcore_url({'id':element.getId()},'news-detail')}}" class="news-more-link">
-                                    Read more &raquo;
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    {% set news =  pimcore_relations("news") %}
+    {% set lastIndex = news.elementIds|length %}
+
+    {% for key,element in news %}
+        <article class="one_third {% if loop.index == lastIndex %} lastbox  {% endif %}">
+            <figure>
+                {% if element.media is defined and element.media is not empty %}
+                    {{ element.media.thumbnail({'width':290,'height':180}).html|raw }}
+                {% else %}
+                    <img src="images/demo/290x180.gif" width="290" height="180" alt="">
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            {% if editmode %}
-                <div class="no-news-message">Please add news items using the editor above</div>
-            {% endif %}
-        {% endif %}
-    </div>
+             
+                <figcaption>
+                    <h2 class='news-head'>{{element.title}}</h2>
+                    <p class='news-short-desc'>{{element.shortDescription}}</p>
+                    <footer class="more"><a href="{{pimcore_url({'id':element.getId()},'news-detail')}}">Read More &raquo;</a></footer>
+                </figcaption>
+            </figure>
+        </article>
+    {% endfor %}
+  
 </section>

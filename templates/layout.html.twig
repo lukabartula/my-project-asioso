@@ -1,4 +1,3 @@
-{# templates/layout.html.twig #}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -27,6 +26,8 @@
     q:before{content:'� '; font-size:26px;}
     q:after{content:' �'; font-size:26px; line-height:0;}
     div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
+    .wrapperCentered {display:flex; flex-direction:column; justify-content: center; align-items:center;}
+    .wrapperRow{display:flex; flex-direction:row; place-content:center;}
     .row1, .row1 a{color:#C0BAB6; background-color:#333333;}
     .row2{color:#979797; background-color:#FFFFFF;}
     .row2 a{color:#93bd32; background-color:#FFFFFF;}
@@ -107,26 +108,17 @@
       {% block content %}
       
       {% endblock %}
-    </div>
-  </div>
 
-  <div class="wrapper row3">
-    <div id="footer" class="clear">
-      {% block footer_blocks %}
-        {% if pimcore_document('/include/footer') %}
-          {{ pimcore_inc(pimcore_document('/include/footer')) }}
-        {% endif %}
-      {% endblock %}
     </div>
   </div>
 
 
-  <div class="wrapper row4">
-    <footer id="copyright" class="clear">
-      <p class="fl_left">Copyright &copy; {{ "now"|date("Y") }} - All Rights Reserved - <a href="#">Domain Name</a></p>
-      <p class="fl_right">Posao kod <a href="https://www.asioso.com/ba/posao-kod-asioso" title="Zaposlite se kod nas">asioso</a></p>
-    </footer>
-  </div>
+  
+{% include 'include/footer.html.twig' %}
+
+
+
+  
 
   {% block javascripts %}{% endblock %}
 </body>
