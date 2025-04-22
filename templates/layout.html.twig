@@ -81,29 +81,46 @@
     #copyright p{margin:0; padding: 0;}
   </style>
 
+{% if not document is defined or not document %}
+    {% set document = pimcore_document(1) %}
+{% endif %}
+
+{% set navStartNode = document.getProperty('navigationRoot') %}
+{% if not navStartNode is instanceof('\\Pimcore\\Model\\Document\\Page') %}
+    {% set navStartNode = pimcore_document(1) %}
+{% endif %}
+
+{% set mainNavigation = pimcore_build_nav({
+    active: document,
+    root: navStartNode
+}) %}
+
 
 
 </head>
 <body>
-  <div class="wrapper row1">
-    <header id="header" class="clear">
-      <div id="hgroup">
-        <h1><a href="#">Company Logo</a></h1>
-        <h2>HTML5 Website Template</h2>
-      </div>
-      <nav>
-        <ul>
-          {% block nav_links %}
-            <li><a href="#">Text Link</a></li>
-            <li><a href="#">Text Link</a></li>
-            <li><a href="#">Text Link</a></li>
-            <li><a href="#">Text Link</a></li>
-            <li class="last"><a href="#">Text Link</a></li>
-          {% endblock %}
-        </ul>
-      </nav>
-    </header>
-  </div>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="{{ navStartNode }}">Company Logo</a></h1>
+      <h2>HTML5 Website Template</h2>
+    </div>
+    <nav class='navigation'>
+        {{
+            pimcore_render_nav(mainNavigation, 'menu', 'renderMenu', {
+                maxDepth: 2,
+                ulClass: {
+                    0: '',
+                    1: 'dropdown dropdown-menu',
+                    'default': 'dropdown-menu dropdown-submenu'
+                }
+            })
+        }}
+    
+    </nav>
+  </header>
+</div>
+
 
   <div class="wrapper row2">
     <div id="container" class="clear">

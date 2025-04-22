@@ -9,12 +9,12 @@ pimcore:
                                 method: scaleByHeight
                                 arguments:
                                     height: 250
-                                    forceResize: false
+                                    forceResize: true
                             -
                                 method: scaleByWidth
                                 arguments:
                                     width: 450
-                                    forceResize: false
+                                    forceResize: true
                         medias: {  }
                         name: content
                         description: 'Content area images'
@@ -26,6 +26,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1745284247
+                        modificationDate: 1745356288
                         creationDate: 1745269014
                         preserveAnimation: false

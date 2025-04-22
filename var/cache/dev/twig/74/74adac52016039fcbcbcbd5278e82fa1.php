@@ -34,7 +34,6 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
-            'nav_links' => [$this, 'block_nav_links'],
             'content' => [$this, 'block_content'],
             'javascripts' => [$this, 'block_javascripts'],
         ];
@@ -60,18 +59,10 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
         // line 6
         yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
         yield "</title>
-  <link rel=\"stylesheet\" href=\"";
-        // line 7
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/layout.css"), "html", null, true);
-        yield "\" type=\"text/css\">
-  <!--[if lt IE 9]><script src=\"";
-        // line 8
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("scripts/html5shiv.js"), "html", null, true);
-        yield "\"></script><![endif]-->
   ";
-        // line 9
+        // line 7
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 10
+        // line 8
         yield "  <style>
     html{overflow-y:scroll;}
     body{margin:0; padding:0; font-size:13px; font-family:Georgia, \"Times New Roman\", Times, serif; color:#919191; background-color:#232323;}
@@ -147,31 +138,66 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
     #copyright{padding:20px 0;}
     #copyright p{margin:0; padding: 0;}
   </style>
+
+";
+        // line 84
+        if (( !array_key_exists("document", $context) ||  !(isset($context["document"]) || array_key_exists("document", $context) ? $context["document"] : (function () { throw new RuntimeError('Variable "document" does not exist.', 84, $this->source); })()))) {
+            // line 85
+            yield "    ";
+            $context["document"] = Pimcore\Model\Document::getById(1);
+        }
+        // line 87
+        yield "
+";
+        // line 88
+        $context["navStartNode"] = CoreExtension::getAttribute($this->env, $this->source, (isset($context["document"]) || array_key_exists("document", $context) ? $context["document"] : (function () { throw new RuntimeError('Variable "document" does not exist.', 88, $this->source); })()), "getProperty", ["navigationRoot"], "method", false, false, true, 88);
+        // line 89
+        if ( !$this->env->getTest('instanceof')->getCallable()((isset($context["navStartNode"]) || array_key_exists("navStartNode", $context) ? $context["navStartNode"] : (function () { throw new RuntimeError('Variable "navStartNode" does not exist.', 89, $this->source); })()), "\\Pimcore\\Model\\Document\\Page")) {
+            // line 90
+            yield "    ";
+            $context["navStartNode"] = Pimcore\Model\Document::getById(1);
+        }
+        // line 92
+        yield "
+";
+        // line 93
+        $context["mainNavigation"] = $this->env->getFunction('pimcore_build_nav')->getCallable()(["active" => $this->sandbox->ensureToStringAllowed(        // line 94
+(isset($context["document"]) || array_key_exists("document", $context) ? $context["document"] : (function () { throw new RuntimeError('Variable "document" does not exist.', 94, $this->source); })()), 94, $this->source), "root" => $this->sandbox->ensureToStringAllowed(        // line 95
+(isset($context["navStartNode"]) || array_key_exists("navStartNode", $context) ? $context["navStartNode"] : (function () { throw new RuntimeError('Variable "navStartNode" does not exist.', 95, $this->source); })()), 95, $this->source)]);
+        // line 97
+        yield "
+
+
 </head>
 <body>
-  <div class=\"wrapper row1\">
-    <header id=\"header\" class=\"clear\">
-      <div id=\"hgroup\">
-        <h1><a href=\"#\">Company Logo</a></h1>
-        <h2>HTML5 Website Template</h2>
-      </div>
-      <nav>
-        <ul>
-          ";
-        // line 95
-        yield from $this->unwrap()->yieldBlock('nav_links', $context, $blocks);
-        // line 102
-        yield "        </ul>
-      </nav>
-    </header>
-  </div>
+<div class=\"wrapper row1\">
+  <header id=\"header\" class=\"clear\">
+    <div id=\"hgroup\">
+      <h1><a href=\"";
+        // line 105
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->sandbox->ensureToStringAllowed((isset($context["navStartNode"]) || array_key_exists("navStartNode", $context) ? $context["navStartNode"] : (function () { throw new RuntimeError('Variable "navStartNode" does not exist.', 105, $this->source); })()), 105, $this->source), "html", null, true);
+        yield "\">Company Logo</a></h1>
+      <h2>HTML5 Website Template</h2>
+    </div>
+    <nav class='navigation'>
+        ";
+        // line 109
+        yield $this->env->getFunction('pimcore_render_nav')->getCallable()($this->sandbox->ensureToStringAllowed(        // line 110
+(isset($context["mainNavigation"]) || array_key_exists("mainNavigation", $context) ? $context["mainNavigation"] : (function () { throw new RuntimeError('Variable "mainNavigation" does not exist.', 110, $this->source); })()), 110, $this->source), "menu", "renderMenu", ["maxDepth" => 2, "ulClass" => ["", "dropdown dropdown-menu", "default" => "dropdown-menu dropdown-submenu"]]);
+        // line 118
+        yield "
+    
+    </nav>
+  </header>
+</div>
+
 
   <div class=\"wrapper row2\">
     <div id=\"container\" class=\"clear\">
       ";
-        // line 109
+        // line 127
         yield from $this->unwrap()->yieldBlock('content', $context, $blocks);
-        // line 112
+        // line 130
         yield "
     </div>
   </div>
@@ -179,18 +205,18 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
 
   
 ";
-        // line 118
-        yield from $this->loadTemplate("include/footer.html.twig", "layout.html.twig", 118)->unwrap()->yield($context);
-        // line 119
+        // line 136
+        yield from $this->loadTemplate("include/footer.html.twig", "layout.html.twig", 136)->unwrap()->yield($context);
+        // line 137
         yield "
 
 
   
 
   ";
-        // line 124
+        // line 142
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 125
+        // line 143
         yield "</body>
 </html>
 ";
@@ -226,7 +252,7 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
         yield from [];
     }
 
-    // line 9
+    // line 7
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -248,36 +274,7 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
         yield from [];
     }
 
-    // line 95
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_nav_links(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "nav_links"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "nav_links"));
-
-        // line 96
-        yield "            <li><a href=\"#\">Text Link</a></li>
-            <li><a href=\"#\">Text Link</a></li>
-            <li><a href=\"#\">Text Link</a></li>
-            <li><a href=\"#\">Text Link</a></li>
-            <li class=\"last\"><a href=\"#\">Text Link</a></li>
-          ";
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 109
+    // line 127
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -290,7 +287,7 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "content"));
 
-        // line 110
+        // line 128
         yield "      
       ";
         
@@ -302,7 +299,7 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
         yield from [];
     }
 
-    // line 124
+    // line 142
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -345,7 +342,7 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  306 => 124,  294 => 110,  281 => 109,  265 => 96,  252 => 95,  230 => 9,  207 => 6,  194 => 125,  192 => 124,  185 => 119,  183 => 118,  175 => 112,  173 => 109,  164 => 102,  162 => 95,  75 => 10,  73 => 9,  69 => 8,  65 => 7,  61 => 6,  55 => 2,);
+        return array (  303 => 142,  291 => 128,  278 => 127,  256 => 7,  233 => 6,  220 => 143,  218 => 142,  211 => 137,  209 => 136,  201 => 130,  199 => 127,  188 => 118,  186 => 110,  185 => 109,  178 => 105,  168 => 97,  166 => 95,  165 => 94,  164 => 93,  161 => 92,  157 => 90,  155 => 89,  153 => 88,  150 => 87,  146 => 85,  144 => 84,  66 => 8,  64 => 7,  60 => 6,  54 => 2,);
     }
 
     public function getSourceContext(): Source
@@ -356,8 +353,6 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
 <head>
   <meta charset=\"UTF-8\">
   <title>{% block title %}asioso test template{% endblock %}</title>
-  <link rel=\"stylesheet\" href=\"{{ asset('styles/layout.css') }}\" type=\"text/css\">
-  <!--[if lt IE 9]><script src=\"{{ asset('scripts/html5shiv.js') }}\"></script><![endif]-->
   {% block stylesheets %}{% endblock %}
   <style>
     html{overflow-y:scroll;}
@@ -434,27 +429,47 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
     #copyright{padding:20px 0;}
     #copyright p{margin:0; padding: 0;}
   </style>
+
+{% if not document is defined or not document %}
+    {% set document = pimcore_document(1) %}
+{% endif %}
+
+{% set navStartNode = document.getProperty('navigationRoot') %}
+{% if not navStartNode is instanceof('\\\\Pimcore\\\\Model\\\\Document\\\\Page') %}
+    {% set navStartNode = pimcore_document(1) %}
+{% endif %}
+
+{% set mainNavigation = pimcore_build_nav({
+    active: document,
+    root: navStartNode
+}) %}
+
+
+
 </head>
 <body>
-  <div class=\"wrapper row1\">
-    <header id=\"header\" class=\"clear\">
-      <div id=\"hgroup\">
-        <h1><a href=\"#\">Company Logo</a></h1>
-        <h2>HTML5 Website Template</h2>
-      </div>
-      <nav>
-        <ul>
-          {% block nav_links %}
-            <li><a href=\"#\">Text Link</a></li>
-            <li><a href=\"#\">Text Link</a></li>
-            <li><a href=\"#\">Text Link</a></li>
-            <li><a href=\"#\">Text Link</a></li>
-            <li class=\"last\"><a href=\"#\">Text Link</a></li>
-          {% endblock %}
-        </ul>
-      </nav>
-    </header>
-  </div>
+<div class=\"wrapper row1\">
+  <header id=\"header\" class=\"clear\">
+    <div id=\"hgroup\">
+      <h1><a href=\"{{ navStartNode }}\">Company Logo</a></h1>
+      <h2>HTML5 Website Template</h2>
+    </div>
+    <nav class='navigation'>
+        {{
+            pimcore_render_nav(mainNavigation, 'menu', 'renderMenu', {
+                maxDepth: 2,
+                ulClass: {
+                    0: '',
+                    1: 'dropdown dropdown-menu',
+                    'default': 'dropdown-menu dropdown-submenu'
+                }
+            })
+        }}
+    
+    </nav>
+  </header>
+</div>
+
 
   <div class=\"wrapper row2\">
     <div id=\"container\" class=\"clear\">
@@ -481,15 +496,15 @@ class __TwigTemplate_74c7067378bf076672522eeab779a107 extends Template
     
     public function checkSecurity()
     {
-        static $tags = ["block" => 6, "include" => 118];
-        static $filters = ["escape" => 7];
-        static $functions = ["asset" => 7];
+        static $tags = ["block" => 6, "if" => 84, "set" => 85, "include" => 136];
+        static $filters = ["escape" => 105];
+        static $functions = ["pimcore_document" => 85, "pimcore_build_nav" => 93, "pimcore_render_nav" => 110];
 
         try {
             $this->sandbox->checkSecurity(
-                ['block', 'include'],
+                ['block', 'if', 'set', 'include'],
                 ['escape'],
-                ['asset'],
+                ['pimcore_document', 'pimcore_build_nav', 'pimcore_render_nav'],
                 $this->source
             );
         } catch (SecurityError $e) {
