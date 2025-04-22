@@ -27,7 +27,7 @@
                 <figcaption>
                     <h2 class='news-head'>{{element.title}}</h2>
                     <p class='news-short-desc'>{{element.shortDescription}}</p>
-                    <footer class="more"><a href="{{pimcore_url({'id':element.getId()},'news-detail')}}">Read More &raquo;</a></footer>
+                    <footer class="more"><a href="{{ path('news_details', {id: element.getId()}) }}">Read More &raquo;</a></footer>
                 </figcaption>
             </figure>
         </article>

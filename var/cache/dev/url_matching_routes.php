@@ -440,6 +440,7 @@ return [
         '/admin/bundle/search/search/find' => [[['_route' => 'pimcore_bundle_search_search_find', '_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::findAction'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/admin/bundle/search/search/quicksearch' => [[['_route' => 'pimcore_bundle_search_search_quicksearch', '_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::quickSearchAction'], null, ['GET' => 0], null, false, false, null]],
         '/admin/bundle/search/search/quicksearch-get-by-id' => [[['_route' => 'pimcore_bundle_search_search_quicksearch_by_id', '_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::quickSearchByIdAction'], null, ['GET' => 0], null, false, false, null]],
+        '/news' => [[['_route' => 'news_list', '_controller' => 'App\\Controller\\NewsController::listAction'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -471,7 +472,9 @@ return [
                     .')'
                     .'|sset/webdav(.*)(*:525)'
                 .')'
-                .'|/news/([^/]++)(*:548)'
+                .'|/news/([^/]++)(?'
+                    .'|(*:551)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -489,7 +492,8 @@ return [
         450 => [[['_route' => 'pimcore_admin_dataobject_dataobject_diffversions', '_controller' => 'Pimcore\\Bundle\\AdminBundle\\Controller\\Admin\\DataObject\\DataObjectController::diffVersionsAction'], ['from', 'to'], ['GET' => 0], null, false, true, null]],
         501 => [[['_route' => 'pimcore_admin_document_document_diffversions', '_controller' => 'Pimcore\\Bundle\\AdminBundle\\Controller\\Admin\\Document\\DocumentController::diffVersionsAction'], ['from', 'to'], ['GET' => 0], null, false, true, null]],
         525 => [[['_route' => 'pimcore_webdav', '_controller' => 'Pimcore\\Bundle\\CoreBundle\\Controller\\WebDavController::webdavAction'], ['path'], null, null, false, true, null]],
-        548 => [
+        551 => [
+            [['_route' => 'news_details', '_controller' => 'App\\Controller\\NewsController::detailsAction'], ['id'], null, null, false, true, null],
             [['_route' => 'news-detail', '_controller' => 'App\\Controller\\NewsController::detailAction'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

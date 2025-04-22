@@ -431,6 +431,8 @@ return [
     'pimcore_bundle_search_search_quicksearch' => [[], ['_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::quickSearchAction'], [], [['text', '/admin/bundle/search/search/quicksearch']], [], [], []],
     'pimcore_bundle_search_search_quicksearch_by_id' => [[], ['_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::quickSearchByIdAction'], [], [['text', '/admin/bundle/search/search/quicksearch-get-by-id']], [], [], []],
     'pimcore_webdav' => [['path'], ['_controller' => 'Pimcore\\Bundle\\CoreBundle\\Controller\\WebDavController::webdavAction'], ['path' => '.*'], [['variable', '', '.*', 'path', true], ['text', '/asset/webdav']], [], [], []],
+    'news_list' => [[], ['_controller' => 'App\\Controller\\NewsController::listAction'], [], [['text', '/news']], [], [], []],
+    'news_details' => [['id'], ['_controller' => 'App\\Controller\\NewsController::detailsAction'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/news']], [], [], []],
     'news-detail' => [['id'], ['_controller' => 'App\\Controller\\NewsController::detailAction'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/news']], [], [], []],
     'Pimcore\Bundle\AdminBundle\Controller\Admin\Asset\AssetController::treeGetRootAction' => [[], ['_controller' => 'Pimcore\\Bundle\\AdminBundle\\Controller\\Admin\\Asset\\AssetController::treeGetRootAction'], [], [['text', '/admin/asset/tree-get-root']], [], [], []],
     'Pimcore\Bundle\AdminBundle\Controller\Admin\Asset\AssetController::deleteInfoAction' => [[], ['_controller' => 'Pimcore\\Bundle\\AdminBundle\\Controller\\Admin\\Asset\\AssetController::deleteInfoAction'], [], [['text', '/admin/asset/delete-info']], [], [], []],
@@ -837,5 +839,7 @@ return [
     'Pimcore\Bundle\SimpleBackendSearchBundle\Controller\SearchController::findAction' => [[], ['_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::findAction'], [], [['text', '/admin/bundle/search/search/find']], [], [], []],
     'Pimcore\Bundle\SimpleBackendSearchBundle\Controller\SearchController::quickSearchAction' => [[], ['_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::quickSearchAction'], [], [['text', '/admin/bundle/search/search/quicksearch']], [], [], []],
     'Pimcore\Bundle\SimpleBackendSearchBundle\Controller\SearchController::quickSearchByIdAction' => [[], ['_controller' => 'Pimcore\\Bundle\\SimpleBackendSearchBundle\\Controller\\SearchController::quickSearchByIdAction'], [], [['text', '/admin/bundle/search/search/quicksearch-get-by-id']], [], [], []],
+    'App\Controller\NewsController::listAction' => [[], ['_controller' => 'App\\Controller\\NewsController::listAction'], [], [['text', '/news']], [], [], []],
+    'App\Controller\NewsController::detailsAction' => [['id'], ['_controller' => 'App\\Controller\\NewsController::detailsAction'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/news']], [], [], []],
     'App\Controller\NewsController::detailAction' => [['id'], ['_controller' => 'App\\Controller\\NewsController::detailAction'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/news']], [], [], []],
 ];

@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    
+
+    <div class="news-details">
+        <h1>{{ news.title }}</h1>
+        
+        
+        {% if news.media %}
+            <div class="news-image">
+                {{ news.media.thumbnail('news_detail').html|raw }}
+            </div>
+        {% endif %}
+        
+        <div >
+            {{ news.description|raw }}
+        </div>
+        
+        <a href="{{ path('news_list') }}" class="back-to-news"><< Back to News</a>
+    </div>
+{% endblock %} 

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Website\LinkGenerator\NewsLinkGenerator;
@@ -16,7 +15,34 @@ use Pimcore\Controller\FrontendController;
 
 class NewsController extends FrontendController
 {
-   
+    #[Route('/news', name: 'news_list')]
+    public function listAction(): Response
+    {
+        return $this->render('news/list.html.twig');
+    }
+
+    #[Route('/news/{id}', name: 'news_details')]
+    public function detailsAction(Request $request, int $id): Response
+    {
+        // Debug the ID
+        \Pimcore\Logger::debug('News ID: ' . $id);
+        
+        $news = News::getById($id);
+        
+        // Debug the news object
+        \Pimcore\Logger::debug('News object: ' . ($news ? 'found' : 'not found'));
+        if ($news) {
+            \Pimcore\Logger::debug('News title: ' . $news->getTitle());
+        }
+        
+        if (!$news) {
+            throw $this->createNotFoundException('News article not found');
+        }
+
+        return $this->render('news/details.html.twig', [
+            'news' => $news
+        ]);
+    }
 
     /**
      * @Route("news/{id}", name="news-detail")
@@ -59,6 +85,4 @@ class NewsController extends FrontendController
     {
         return array_merge($request->request->all(), $request->query->all());
     }
-
-  
 }

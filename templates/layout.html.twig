@@ -1,10 +1,9 @@
+{# templates/layout.html.twig #}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}asioso test template{% endblock %}</title>
-  <link rel="stylesheet" href="{{ asset('styles/layout.css') }}" type="text/css">
-  <!--[if lt IE 9]><script src="{{ asset('scripts/html5shiv.js') }}"></script><![endif]-->
   {% block stylesheets %}{% endblock %}
   <style>
     html{overflow-y:scroll;}
@@ -81,6 +80,9 @@
     #copyright{padding:20px 0;}
     #copyright p{margin:0; padding: 0;}
   </style>
+
+
+
 </head>
 <body>
   <div class="wrapper row1">

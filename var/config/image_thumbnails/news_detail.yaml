@@ -1,0 +1,31 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    news_detail:
+                        items:
+                            -
+                                method: scaleByHeight
+                                arguments:
+                                    height: 600
+                                    forceResize: false
+                            -
+                                method: scaleByWidth
+                                arguments:
+                                    width: 800
+                                    forceResize: false
+                        medias: {  }
+                        name: news_detail
+                        description: ''
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1745291015
+                        creationDate: 1745290979
+                        preserveAnimation: false

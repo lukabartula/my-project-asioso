@@ -123,6 +123,10 @@
                     'height': '200px',
                     'placeholder': 'Enter your text here'
                 }) }}
+                <footer class="more">
+                    {% set link = pimcore_link('link') %}
+                    {{ link|raw }}
+                </footer>
             </div>
         </div>
     </div>
