@@ -1,0 +1,38 @@
+pimcore:
+    assets:
+        image:
+            thumbnails:
+                definitions:
+                    content:
+                        items:
+                            -
+                                method: scaleByHeight
+                                arguments:
+                                    height: 250
+                                    forceResize: true
+                            -
+                                method: scaleByWidth
+                                arguments:
+                                    width: 450
+                                    forceResize: true
+                            -
+                                method: cover
+                                arguments:
+                                    width: 450
+                                    height: 250
+                                    positioning: center
+                                    forceResize: false
+                        medias: {  }
+                        name: content
+                        description: 'Content area images'
+                        group: ''
+                        format: SOURCE
+                        quality: 85
+                        highResolution: null
+                        preserveColor: false
+                        preserveMetaData: false
+                        rasterizeSVG: false
+                        downloadable: false
+                        modificationDate: 1745364123
+                        creationDate: 1745269014
+                        preserveAnimation: false

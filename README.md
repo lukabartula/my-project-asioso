@@ -70,36 +70,14 @@ docker exec -i <CONTAINER_ID> mysql -u root -pROOT pimcore < dump.sql
 
 ### Codebase Structure
 
-The project follows a standard Pimcore structure:
+The project structure:
 
 ```
+public/            # Web-accessible assets
 src/
 ├── Controller/    # Business logic controllers
-├── Model/         # Data object definitions
-└── Twig/          # Template extensions
+└── Document/      
+   └──AreaBrick/   #Areabricks of code used
 templates/         # View layer templates
-public/            # Web-accessible assets
 ```
 
-### Development Tools
-
-#### Local Development Server
-
-For local development, use:
-
-```bash
-bin/console server:run
-```
-
-#### Common Development Commands
-
-```bash
-# Clear cache
-bin/console cache:clear
-
-# Update database schema
-bin/console doctrine:schema:update --force
-
-# Rebuild classes
-bin/console pimcore:deployment:classes-rebuild
-```
