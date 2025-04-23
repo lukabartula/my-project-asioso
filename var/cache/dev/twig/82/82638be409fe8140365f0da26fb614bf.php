@@ -146,7 +146,7 @@ class __TwigTemplate_2863fadf006525f1b880fe24e542e0e4 extends Template
         yield "
         </div>
         
-        <a><< Back to News</a>
+        <a>Back to News</a>
     </div>
 ";
         
@@ -222,7 +222,7 @@ class __TwigTemplate_2863fadf006525f1b880fe24e542e0e4 extends Template
             {{ news.description|raw }}
         </div>
         
-        <a><< Back to News</a>
+        <a>Back to News</a>
     </div>
 {% endblock %} ", "news/details.html.twig", "/var/www/html/templates/news/details.html.twig");
     }
