@@ -63,7 +63,7 @@ docker ps
 
 ```bash
 # Execute the import command (replace <CONTAINER_ID> with actual ID)
-docker exec -i <CONTAINER_ID> mysql -u root -pROOT pimcore < pimcore_db.sql
+docker exec -i <CONTAINER_ID> mysql -u root -pROOT pimcore < dump.sql
 ```
 
 ## Project Organization
