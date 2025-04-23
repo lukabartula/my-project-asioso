@@ -86,3 +86,4 @@ class NewsController extends FrontendController
         return array_merge($request->request->all(), $request->query->all());
     }
 }
+ 

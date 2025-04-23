@@ -6,14 +6,11 @@ pimcore:
                     news_detail:
                         items:
                             -
-                                method: scaleByHeight
+                                method: cover
                                 arguments:
+                                    width: 960
                                     height: 600
-                                    forceResize: false
-                            -
-                                method: scaleByWidth
-                                arguments:
-                                    width: 800
+                                    positioning: center
                                     forceResize: false
                         medias: {  }
                         name: news_detail
@@ -26,6 +23,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1745291015
+                        modificationDate: 1745370467
                         creationDate: 1745290979
                         preserveAnimation: false

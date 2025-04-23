@@ -6,14 +6,11 @@ pimcore:
                     hero-image:
                         items:
                             -
-                                method: scaleByHeight
-                                arguments:
-                                    height: 360
-                                    forceResize: false
-                            -
-                                method: scaleByWidth
+                                method: cover
                                 arguments:
                                     width: 960
+                                    height: 360
+                                    positioning: center
                                     forceResize: false
                         medias: {  }
                         name: hero-image
@@ -26,6 +23,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1745355692
+                        modificationDate: 1745364157
                         creationDate: 1745355661
                         preserveAnimation: false

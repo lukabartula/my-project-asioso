@@ -53,6 +53,7 @@
     .two_third{width:630px;}
     .three_third{width:960px; float:none; margin-right:0; clear:both;}
     .lastbox{margin-right:0;}
+    .news-image{padding:  20px 0;}
     #header{padding:20px 0;}
     #header #hgroup{float:left; margin:0 0 20px 0;}
     #header #hgroup h1, #header #hgroup h2{font-weight:normal; font-style:normal; text-transform:none;}
@@ -124,9 +125,11 @@
 
   <div class="wrapper row2">
     <div id="container" class="clear">
-      {% block content %}
-      
-      {% endblock %}
+      <div class="homepage">
+        {% block content %}
+        
+        {% endblock %}
+      </div>
 
     </div>
   </div>
@@ -134,8 +137,6 @@
 
   
 {% include 'include/footer.html.twig' %}
-
-
 
   
 

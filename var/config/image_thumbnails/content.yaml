@@ -15,6 +15,13 @@ pimcore:
                                 arguments:
                                     width: 450
                                     forceResize: true
+                            -
+                                method: cover
+                                arguments:
+                                    width: 450
+                                    height: 250
+                                    positioning: center
+                                    forceResize: false
                         medias: {  }
                         name: content
                         description: 'Content area images'
@@ -26,6 +33,6 @@ pimcore:
                         preserveMetaData: false
                         rasterizeSVG: false
                         downloadable: false
-                        modificationDate: 1745356288
+                        modificationDate: 1745364123
                         creationDate: 1745269014
                         preserveAnimation: false

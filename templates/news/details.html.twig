@@ -1,11 +1,30 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
-    
+{% block stylesheets %}
+<style>
+    .news-details {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
 
+    .news-details h1 {
+        font-size: 2.5rem;
+        padding: 1.5rem 0;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        color: #333;
+    }
+
+    .news-image {
+        margin-bottom: 2rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
     <div class="news-details">
         <h1>{{ news.title }}</h1>
-        
         
         {% if news.media %}
             <div class="news-image">
@@ -13,10 +32,10 @@
             </div>
         {% endif %}
         
-        <div >
+        <div>
             {{ news.description|raw }}
         </div>
         
-        <a href="{{ path('news_list') }}" class="back-to-news"><< Back to News</a>
+        <a>Back to News</a>
     </div>
 {% endblock %} 

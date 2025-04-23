@@ -1128,6 +1128,15 @@
                       <parameter key="forceResize">true</parameter>
                     </parameter>
                   </parameter>
+                  <parameter type="collection">
+                    <parameter key="method">cover</parameter>
+                    <parameter key="arguments" type="collection">
+                      <parameter key="width">450</parameter>
+                      <parameter key="height">250</parameter>
+                      <parameter key="positioning">center</parameter>
+                      <parameter key="forceResize">false</parameter>
+                    </parameter>
+                  </parameter>
                 </parameter>
                 <parameter key="medias" type="collection"/>
                 <parameter key="name">content</parameter>
@@ -1140,23 +1149,18 @@
                 <parameter key="preserveMetaData">false</parameter>
                 <parameter key="rasterizeSVG">false</parameter>
                 <parameter key="downloadable">false</parameter>
-                <parameter key="modificationDate">1745356288</parameter>
+                <parameter key="modificationDate">1745364123</parameter>
                 <parameter key="creationDate">1745269014</parameter>
                 <parameter key="preserveAnimation">false</parameter>
               </parameter>
               <parameter key="hero-image" type="collection">
                 <parameter key="items" type="collection">
                   <parameter type="collection">
-                    <parameter key="method">scaleByHeight</parameter>
-                    <parameter key="arguments" type="collection">
-                      <parameter key="height">360</parameter>
-                      <parameter key="forceResize">false</parameter>
-                    </parameter>
-                  </parameter>
-                  <parameter type="collection">
-                    <parameter key="method">scaleByWidth</parameter>
+                    <parameter key="method">cover</parameter>
                     <parameter key="arguments" type="collection">
                       <parameter key="width">960</parameter>
+                      <parameter key="height">360</parameter>
+                      <parameter key="positioning">center</parameter>
                       <parameter key="forceResize">false</parameter>
                     </parameter>
                   </parameter>
@@ -1172,23 +1176,18 @@
                 <parameter key="preserveMetaData">false</parameter>
                 <parameter key="rasterizeSVG">false</parameter>
                 <parameter key="downloadable">false</parameter>
-                <parameter key="modificationDate">1745355692</parameter>
+                <parameter key="modificationDate">1745364157</parameter>
                 <parameter key="creationDate">1745355661</parameter>
                 <parameter key="preserveAnimation">false</parameter>
               </parameter>
               <parameter key="news" type="collection">
                 <parameter key="items" type="collection">
                   <parameter type="collection">
-                    <parameter key="method">scaleByHeight</parameter>
-                    <parameter key="arguments" type="collection">
-                      <parameter key="height">180</parameter>
-                      <parameter key="forceResize">false</parameter>
-                    </parameter>
-                  </parameter>
-                  <parameter type="collection">
-                    <parameter key="method">scaleByWidth</parameter>
+                    <parameter key="method">cover</parameter>
                     <parameter key="arguments" type="collection">
                       <parameter key="width">290</parameter>
+                      <parameter key="height">180</parameter>
+                      <parameter key="positioning">center</parameter>
                       <parameter key="forceResize">false</parameter>
                     </parameter>
                   </parameter>
@@ -1204,23 +1203,18 @@
                 <parameter key="preserveMetaData">false</parameter>
                 <parameter key="rasterizeSVG">false</parameter>
                 <parameter key="downloadable">false</parameter>
-                <parameter key="modificationDate">1745355651</parameter>
+                <parameter key="modificationDate">1745364050</parameter>
                 <parameter key="creationDate">1745355605</parameter>
                 <parameter key="preserveAnimation">false</parameter>
               </parameter>
               <parameter key="news_detail" type="collection">
                 <parameter key="items" type="collection">
                   <parameter type="collection">
-                    <parameter key="method">scaleByHeight</parameter>
+                    <parameter key="method">cover</parameter>
                     <parameter key="arguments" type="collection">
+                      <parameter key="width">960</parameter>
                       <parameter key="height">600</parameter>
-                      <parameter key="forceResize">false</parameter>
-                    </parameter>
-                  </parameter>
-                  <parameter type="collection">
-                    <parameter key="method">scaleByWidth</parameter>
-                    <parameter key="arguments" type="collection">
-                      <parameter key="width">800</parameter>
+                      <parameter key="positioning">center</parameter>
                       <parameter key="forceResize">false</parameter>
                     </parameter>
                   </parameter>
@@ -1236,7 +1230,7 @@
                 <parameter key="preserveMetaData">false</parameter>
                 <parameter key="rasterizeSVG">false</parameter>
                 <parameter key="downloadable">false</parameter>
-                <parameter key="modificationDate">1745291015</parameter>
+                <parameter key="modificationDate">1745370467</parameter>
                 <parameter key="creationDate">1745290979</parameter>
                 <parameter key="preserveAnimation">false</parameter>
               </parameter>
